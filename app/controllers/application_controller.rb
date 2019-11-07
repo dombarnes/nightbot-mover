@@ -1,7 +1,8 @@
 require 'sinatra/base'
+require 'active_support/core_ext'
 
 class ApplicationController < NightbotMover
-
+  @title_tag = ""
   set :views, 'app/views'
   set :erb, escape_html: true
   

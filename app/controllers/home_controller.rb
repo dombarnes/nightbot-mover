@@ -15,8 +15,6 @@ class HomeController < ApplicationController
     json_body = JSON.parse(response.body)
     @commands = Command.collection(json_body["commands"])
     set_title("Welcome")
-    puts @title_tag
-    puts @page_title
     erb :'home/welcome'
   end
 

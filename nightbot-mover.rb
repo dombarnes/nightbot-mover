@@ -8,6 +8,7 @@ require 'sinatra/cross_origin'
 require "active_support"
 require 'date'
 require 'fileutils'
+require 'active_support/core_ext'
 
 puts '-- Loading app.rb --'
 
