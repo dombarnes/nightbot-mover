@@ -7,7 +7,7 @@ require 'sinatra/reloader'
 require 'sinatra/cross_origin'
 require "active_support"
 require 'date'
-# require 'fileutils'
+require 'fileutils'
 
 puts '-- Loading app.rb --'
 
@@ -20,7 +20,7 @@ class NightbotMover < Sinatra::Base
   
   config_file 'config/settings.yml'
   # Dir.mkdir('logs') unless File.exist?('logs')
-  # Dir.mkdir('tmp') unless File.exist?('tmp')
+  Dir.mkdir('tmp') unless File.exist?('tmp')
   require_relative './app/controllers/application_controller.rb'
   Dir.glob('./app/{models,modules,helpers,extensions,controllers}/*.rb').each {  |file| 
     puts file 
@@ -116,7 +116,7 @@ class NightbotMover < Sinatra::Base
     # end
   end
   register Sinatra::AssetPipeline
-  set :precompiled_environments, %i(staging azure_dev production)
+  set :precompiled_environments, %i(staging production)
   
   use Rack::Static, urls: [ '/favicon.ico', '/.well-known', '/stylesheets', '/javascripts', '/images', '/fonts'], root: 'public'
   use Rack::MethodOverride

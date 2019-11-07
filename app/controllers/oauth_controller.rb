@@ -10,7 +10,7 @@ class OAuthController < ApplicationController
     # TODO: Session State not persisting between calls for some reason. Maybe puma server related
     if session[:state] == nil
       session[:state] = SecureRandom.hex
-      # puts "Set Session state as #{session[:state]}"
+      # debug_log "Set Session state as #{session[:state]}"
     end
     session[:nonce] = SecureRandom.hex
     debug_log "Auth - Session: #{session.inspect}"
@@ -25,7 +25,7 @@ class OAuthController < ApplicationController
   end
 
   get '/oauth2callback' do
-    # puts "Trying to log in
+    # debug_log "Trying to log in
     debug_log "Callback - Params: #{params.inspect}"
     # TODO: Figure out why the session is reset when we get redirected back
     if !params["error"].nil?

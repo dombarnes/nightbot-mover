@@ -1,6 +1,7 @@
 class HomeController < ApplicationController  
 
   get '/' do
+    redirect '/welcome' unless session[:current_user].nil?
     erb :'home/index'
   end
 
@@ -13,7 +14,9 @@ class HomeController < ApplicationController
     response = HTTParty.get(settings.nightbot_oauth_server + "/1/commands", headers: { "Authorization" => "Bearer #{session[:access_token]}", "Cache-Control" => "no-cache", "Content-Type" => "application/json" })
     json_body = JSON.parse(response.body)
     @commands = Command.collection(json_body["commands"])
-    puts session[:current_user]
+    set_title("Welcome")
+    puts @title_tag
+    puts @page_title
     erb :'home/welcome'
   end
 
@@ -36,8 +39,9 @@ class HomeController < ApplicationController
     local_file = "#{settings.root}/#{settings.tmp_folder}/#{params[:id]}"
     if File.exists?(local_file)
       send_file local_file, :filename => filename, :type => 'application/json'
+      FileUtils.rm local_file
     else
-      puts "File #{local_file} not found"
+      debug_log "File #{local_file} not found"
       return 404
     end
   end
@@ -49,7 +53,7 @@ class HomeController < ApplicationController
       @error = "No file selected"
       return erb :'home/import'
     end
-    STDERR.puts "Uploading file, original name #{name.inspect}"
+    debug_log "Uploading file, original name #{name.inspect}"
     while blk = tmpfile.read(65536)
       # here you would write it to its final location
       @commands_json = JSON.parse(blk)
@@ -65,7 +69,7 @@ class HomeController < ApplicationController
         }
         response = HTTParty.post(settings.nightbot_oauth_server + "/1/commands", headers: { "Authorization" => "Bearer #{session[:access_token]}", "Cache-Control" => "no-cache", "Content-Type" => "application/json" }, body: @body.to_json)
         if response.code == 200
-          STDOUT.puts "Command added"
+          debug_log "Command added"
           @processed += 1
         elsif response.code == 400
           @results << { 
@@ -73,7 +77,7 @@ class HomeController < ApplicationController
             command: command.to_hash
           }
         else
-          STDOUT.puts "upload failed: " + response.body
+          debug_log "upload failed: " + response.body
         end
       end
     end

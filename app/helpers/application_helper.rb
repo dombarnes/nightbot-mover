@@ -34,7 +34,7 @@ module ApplicationHelpers
   end
 
   def debug_log(message)
-    puts message unless ENV['RACK_ENV'] == "production"
+    STDOUT.puts message unless ENV['RACK_ENV'] == "production"
   end
 
 end

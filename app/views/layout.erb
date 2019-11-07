@@ -26,9 +26,7 @@
       <section class="main">
         <section class="content">
           <div class="page-title">
-          <% if !@page_title.blank? %>
-            <h2><%= @page_title %></h2>
-          <% end %>
+            <h2><%= @title_tag %></h2>
           </div>
           <%= erb :'layouts/flash' %>
           <%= yield %>

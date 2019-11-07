@@ -16,7 +16,7 @@ end
 Dir['./lib/tasks/*.rake'].each { |f| load f }
 
 task console: :environment do
-  puts "Console Environment: #{ENV.fetch('RACK_ENV')}"
+  STDOUT.puts "Console Environment: #{ENV.fetch('RACK_ENV')}"
   Pry.config.add_hook(:before_session, :enable_sql_logger) do
   end
   Pry.start
