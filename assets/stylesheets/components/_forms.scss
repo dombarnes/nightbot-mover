@@ -1,0 +1,66 @@
+form button {
+    line-height: 1;
+}
+
+.form-group {
+    border: 1px solid $Grey-1;
+    padding: $grid-space;
+    margin: $grid-space 0;
+    label {
+        margin-bottom:$grid-space;
+    }
+}
+.form-actions {
+    
+}
+.input {
+    margin-bottom: $grid-space*2;
+}
+
+.input-date {
+    input[type=text] {
+        width: 200px;
+    }
+
+}
+
+.search-box {
+    margin-bottom: 2 * $grid-space; 
+}
+
+.required:after 
+{
+    content: "*";
+    font-weight: bold;
+    color: red; 
+}
+
+input[type=text], input[type=email], input[type=tel], input[type=url], input[type=search], input[type=password], {
+    height: 40px;    
+    border: 1px solid $Green-1;
+    background-color: $White;
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-weight: 300;
+    margin: $grid-space 0;
+    -webkit-appearance: none;
+
+    @include grid-media($wrapper-grid--tablet-up) {
+        width:100%;
+        display: block;
+    }
+}
+
+.form-action {
+    padding: $grid-space;
+}
+
+.form-validation-summary {
+
+}
+
+.field-validation-error {
+    color: $Red-1;
+    font-weight: 400;
+}

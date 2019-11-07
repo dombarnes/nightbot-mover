@@ -1,0 +1,54 @@
+<div class="row">
+  <h2>Your Current Commands</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Message</th>
+        <th>Count</th>
+        <th>User Level</th>
+        <th>Cooldown</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @commands.each do |command| %>
+    <tr>
+      <td><%= command.name %></td>
+      <td><%= command.message %></td>
+      <td><%= command.count %></td>
+      <td><%= command.userlevel %></td>
+      <td><%= command.cooldown %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div>
+<div class="row">
+  <h2>Export</h2>
+  <button id="export-commands" class="button" href="#">Export my commands</button>  
+  <p id="export-result"></p>
+</div>
+<div class="row">
+  <h2>Import</h2>
+  <form method="post" action="/import" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+  </form>
+</div>
+
+<script>
+  $('#export-commands').on('click', function() {
+    $('#export-commands').prop('disabled', true).text('Downloading...').addClass('button-disabled');
+    $.ajax({
+      url: '/export', type: 'post',
+      success: function (response) {
+        $('#export-commands').prop('disabled', false).text('Export my commands').removeClass('button-disabled');
+        window.location.href = ('/export/download/' + response);
+      },
+      error: function (response) {
+        $('#export-result').text('Error' + response);
+        $('#export-commands').prop('disabled', false).text('Export my commands').removeClass('button-disabled');
+      }
+    })
+  });
+</script>

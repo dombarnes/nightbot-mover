@@ -1,0 +1,140 @@
+dl {
+    overflow: hidden;
+    padding-bottom: $grid-space;
+}
+dt, dd {
+    margin: 5px;
+    padding: 4px;
+}
+dt {
+    float: left;
+    min-width: 8em;
+    clear: left;
+    
+    padding: 5px;
+    margin: 0 !important;
+    overflow: hidden;
+    font-weight: 400 !important; 
+    background: $Green-1;
+    color: $White !important;
+}
+dd {
+    padding: 5px;
+    margin: 0 !important;
+    overflow: hidden;
+    &:last-child {
+        margin-bottom: 12px;
+    }
+}
+dd:after {content:' '; white-space:pre;}
+dd:nth-of-type(n+2) {
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    border-spacing: 0 12px; 
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+th {
+    padding-left: 8px;
+    text-align: left;
+    font-weight: 600 !important;
+    padding: 8px;
+    color: $White !important;
+    background-color: $Green-2;
+}
+th:first-child {
+    padding-left: 16px;
+}
+td {
+    border: solid 1px $Grey-1;
+    border-style: solid none;
+    padding: 9px 8px 9px 8px;
+    background-color: $White;
+    font-weight: 300;
+    a:hover {
+        text-decoration: underline;
+    }
+}
+td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 3px; 
+    border-bottom-left-radius: 3px;
+    padding-left: 16px !important;
+}
+td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 3px; 
+    border-top-right-radius: 3px;
+    padding-right: 16px !important;
+}
+
+tr.center, td.center {
+    text-align: center;
+}
+
+.player-online {
+    color: $Green-1;
+    font-weight: 700;
+}
+.player-warning {
+    color: $Amber-1;
+    font-weight: 700;
+}
+.player-offline {
+    color: $Red-1;
+    font-weight: 700;
+}
+tr.row-inactive {
+    td, a {
+        color: $Red-1;
+        font-weight: 700;
+    }
+}
+.detail {
+    color: $Green-1;
+    font-weight: 700;
+}
+
+.detail-red {
+    color: $Red-1;
+    font-weight: 700;
+}
+
+// Tablesort
+th[role=columnheader]:not(.no-sort) {
+	cursor: pointer;
+}
+
+th[role=columnheader]:not(.no-sort):after {
+	content: '';
+	float: right;
+	margin-top: 7px;
+	border-width: 4px 4px 0;
+	border-style: solid;
+	border-color: $Green-1 transparent;
+	visibility: hidden;
+	opacity: 0;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+th[aria-sort=ascending]:not(.no-sort):after {
+	border-top: none;
+	border-width: 0 4px 4px;
+}
+
+th[aria-sort]:not(.no-sort):after {
+	visibility: visible;
+	opacity: 0.4;
+}
+
+th[role=columnheader]:not(.no-sort):hover:after {
+	visibility: visible;
+	opacity: 1;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="<%= ENV['LANG'] %>">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title><%= @title_tag %></title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+  <%= stylesheet_tag 'app', media: "all", "data-turbolinks-track" => "reload" %>
+  <%= javascript_tag 'app', "data-turbolinks-track" => "reload" %>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+  <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+</head>
+<body>
+  <body>
+    <div class="wrapper">
+      <% if current_user %>
+        <header class="header">
+          <%= erb :'layouts/header' %>
+        </header>
+      <% end %>
+      <section class="main">
+        <section class="content">
+          <div class="page-title">
+          <% if !@page_title.blank? %>
+            <h2><%= @page_title %></h2>
+          <% end %>
+          </div>
+          <%= erb :'layouts/flash' %>
+          <%= yield %>
+        </section>
+        <div class="footer">
+        </div>
+      </section>
+  </div>
+</body>
+</html>

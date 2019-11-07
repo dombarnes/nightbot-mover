@@ -1,0 +1,81 @@
+// Examples https://neat.bourbon.io/examples/
+$wrapper-grid: (
+  columns: 1,
+  gutter: 0,
+);
+$wrapper-grid--tablet-up: (
+  columns: 4,
+  gutter: 0,
+  media: "(min-width: 768px)",
+);
+$main-grid: (
+  columns: 4,
+  gutter: 0,
+  media: "(min-width: 768px)",
+);
+
+.wrapper {
+  @include grid-container;
+  height: 100%;
+  display: table;
+  width: 100%;
+}
+  .header {
+    @include grid-column(1, $wrapper-grid);
+  }
+  .sidebar {
+    // @include grid-column(1, $wrapper-grid);
+    // display: table-cell;
+    
+    @include grid-media($wrapper-grid--tablet-up) {
+      // @include grid-column(1);
+      width: 200px;
+      float: left;
+      margin-left: 0;
+    }
+  }
+  .main {
+    @include grid-collapse($main-grid);
+    @include grid-container;
+    float:left;
+    width: 100%;
+    
+    @include grid-media($wrapper-grid--tablet-up) {
+      // @include grid-column(1);
+      width: calc(100% - 200px);
+      float: left;
+      margin-left: 0;
+    }
+  }
+
+  .content {
+    @include grid-column(1, $wrapper-grid);
+    display: table-cell;
+
+    @include grid-media($wrapper-grid--tablet-up) {
+      @include grid-column(4);
+    }
+  }
+  .row {
+    @include grid-column(1, $wrapper-grid);
+    padding: 2.5 * $grid-space;
+  }
+  
+  .col-1 {
+    @include grid-column(1);
+  }
+  .col-2 {
+    @include grid-column(2);
+  }
+  .col-3 {
+    @include grid-column(3);
+  }
+  .col-4 {
+    @include grid-column(4);
+  }
+  .col-6 {
+    @include grid-column(6);
+  }
+  .col-12 {
+    @include grid-column(12);
+  }

@@ -1,0 +1,29 @@
+<div class="row">
+  <h2>Export</h2>
+  <button id="export-commands" class="button" href="#">Export my commands</button>  
+  <p id="export-result"></p>
+</div>
+<div class="row">
+  <h2>Import</h2>
+  <form method="post" action="/import" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+  </form>
+</div>
+
+<script>
+  $('#export-commands').on('click', function() {
+    $('#export-commands').prop('disabled', true).text('Downloading...').addClass('button-disabled');
+    $.ajax({
+      url: '/export', type: 'post',
+      success: function (response) {
+        $('#export-commands').prop('disabled', false).text('Export my commands').removeClass('button-disabled');
+        window.location.href = ('/export/download/' + response);
+      },
+      error: function (response) {
+        $('#export-result').text('Error' + response);
+        $('#export-commands').prop('disabled', false).text('Export my commands').removeClass('button-disabled');
+      }
+    })
+  });
+</script>

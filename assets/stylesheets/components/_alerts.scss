@@ -1,0 +1,79 @@
+// TTV Admin Controller Alerts
+.alert {
+    border-radius: 5px;
+    padding:8px;
+    margin: 0 16px 2 * $grid-space 16px;
+    
+    // margin-bottom: 2 * $grid-space;
+    font-weight: 400;
+    font-size: 16px;
+    color: $White;
+    animation: fadein 3.5s;
+
+    &-notice {
+      border: 1px solid darken($Green-1, 10%);
+      color: $White;
+      background-color: lighten($Green-2, 10%);
+    }
+    &-error {
+      border: 1px solid darken($Red-1, 10%);
+      color: $White;
+      background-color: lighten($Red-1, 10%);
+    }
+    &-warning {
+      border: 1px solid darken($Amber-1, 10%);
+      color: $White;
+      background-color: lighten($Amber-1, 10%);
+    }
+  }
+.alert .close {
+    float: right;
+    font-size: 18px;
+    padding: 0 2px;    
+    cursor: pointer;
+    color: $White;
+}
+  
+.alert-notice {
+  // border: 1px solid darken($Green-1, 10%);
+  // color: $White;
+  // background-color: lighten($Green-2, 10%);
+}
+
+.alert-danger {
+  // border: 1px solid darken($Red-1, 10%);
+  // color: $White;
+  // background-color: lighten($Red-1, 10%);
+}
+
+.alert-warning {
+  // border: 1px solid darken($Amber-1, 10%);
+  // color: $White;
+  // background-color: lighten($Amber-1, 10%);
+}
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+  45% {
+    opacity: 1
+  }
+  60% {
+    opacity: 0
+  }
+  75% {
+    opacity: 1
+  }
+}

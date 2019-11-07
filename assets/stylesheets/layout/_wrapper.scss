@@ -1,0 +1,10 @@
+html, body  {
+  height: 100%;
+  background-color: $White;
+}
+
+.wrapper {
+  @include clearfix;
+  font-family: $brand-font-family;
+  font-size: $brand-font-size;
+}

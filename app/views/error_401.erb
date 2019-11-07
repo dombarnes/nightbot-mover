@@ -1,0 +1,8 @@
+<div class="row">
+  <h1 class="text-danger">401 Unauthorised</h1>
+  <h2 class="text-danger">You do not have permission to access this page</h2>
+  <form action="/auth/logout" method="post">
+    <p>Logged in as: <%= current_user.displayname %></p>
+    <input class="button" type="submit" value="Logout" />
+  </form>
+</div>

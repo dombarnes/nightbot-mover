@@ -1,0 +1,17 @@
+.systems-active {
+
+}
+
+tr.systems-inactive td, tr.systems-inactive td a  {
+    font-weight: 700;
+    color: $Red-1;
+}
+
+.addon-TRB1YRTTVSU25 {
+    background-image: url('/images/extra-storage-icon.png');
+    background-size: 24px 20px;
+    display: inline-block;
+    width: 24px;
+    height: 20px;
+    margin: 0;
+}

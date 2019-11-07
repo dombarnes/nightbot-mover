@@ -1,0 +1,12 @@
+development: &common_settings
+  site_title: "Nightbot Mover"
+  application_host: http://localhost:3000
+  nightbot_oauth_server: https://api.nightbot.tv
+  nightbot_oauth_scope: <%= ENV.fetch('NIGHTBOT_SCOPE') %>
+  nightbot_client_id: <%= ENV.fetch('NIGHTBOT_CLIENT_ID') %>
+  nightbot_client_secret: <%= ENV.fetch('NIGHTBOT_CLIENT_SECRET') %>
+test:
+  <<: *common_settings
+production:
+  <<: *common_settings
+  application_host: https://nightbot-mover.herokuapp.com

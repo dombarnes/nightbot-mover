@@ -1,0 +1,16 @@
+<div class="row">
+    <table class="table">
+    <tr>
+      <th>Message</th>
+      <th>Command</th>
+    </tr>
+    <tbody>
+    <% @results.each do |r| %>
+    <tr>
+      <td><%= r[:result] %></td>
+      <td><%= r[:command] %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

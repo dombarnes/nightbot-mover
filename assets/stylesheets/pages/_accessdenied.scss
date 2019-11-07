@@ -1,0 +1,5 @@
+.accessdenied {
+    @include grid-column(1, $wrapper-grid);
+    text-align: center;
+    margin: 100 auto;
+}

@@ -1,0 +1,13 @@
+.page-title {
+    background-color: lighten($Grey-1, 30%);
+    width: 100%;
+    overflow: hidden;
+    padding-top: 3 * $grid-space;
+    padding-left: 2.5 * $grid-space;
+    
+    h2 { 
+        color: $Grey-3;
+        font-weight: 400;
+        font-size:  1.5rem;
+    }
+}

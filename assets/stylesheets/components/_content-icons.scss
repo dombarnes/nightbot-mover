@@ -1,0 +1,20 @@
+i.content-state {
+    &.content-pinned, &.content-player, &.content-public, &.content-approved {
+        
+        &-True svg{
+            fill: $Red-1;
+        }
+        &-False svg{
+            fill: $Amber-1;
+        }
+    }
+}
+
+span.contentitem {
+    &-Video {}
+    &-Web {}
+    &-Slideshow {}
+    &-TitleScreen{}
+    &-Twitter{}
+    &-ClickView{}
+}
