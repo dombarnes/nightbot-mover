@@ -21,7 +21,7 @@ class NightbotMover < Sinatra::Base
   config_file 'config/settings.yml'
   # Dir.mkdir('logs') unless File.exist?('logs')
   # Dir.mkdir('tmp') unless File.exist?('tmp')
-    
+  require_relative './app/controllers/application_controller.rb'
   Dir.glob('./app/{models,modules,helpers,extensions,controllers}/*.rb').each {  |file| 
     puts file 
     require file 
