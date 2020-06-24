@@ -23,30 +23,25 @@ module UserHelpers
     end
   end
 
-  def user_has_role(role)
-    current_user.role.include?(role)
-  end
-
   def session_expired?
-    if Time.at(session[:access_token_expires_at]) <= Time.now
-      session[:id_token] = nil
-      session[:access_token] = nil
-      session[:refresh_token] = nil
-      session[:current_user] = nil
+    if session[:access_token_expires_at].nil? || Time.at(session[:access_token_expires_at]) <= Time.now
+      session.clear
       return true
     end
     return false
   end
 
   def authorize!
-    redirect '/login' unless authorized?
+    redirect '/oauth/authorize' unless authorized?
   end
 
   def authorized?
-    current_user.role.include? 'Admin'
+    current_user[:admin]
   end
 
   def authenticated?
-    !session[:current_user].empty?
+    return true if session[:current_user].present?
+    return false if session_expired?
   end
+  
 end

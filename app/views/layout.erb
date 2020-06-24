@@ -2,14 +2,14 @@
 <html lang="<%= ENV['LANG'] %>">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title><%= @title_tag %></title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     
-  <%= stylesheet_tag 'app', media: "all", "data-turbolinks-track" => "reload" %>
-  <%= javascript_tag 'app', "data-turbolinks-track" => "reload" %>
+  <%# stylesheet_tag 'app', media: "all", "data-turbolinks-track" => "reload" %>
+  <%# javascript_tag 'app', "data-turbolinks-track" => "reload" %>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
@@ -17,23 +17,23 @@
 </head>
 <body>
   <body>
-    <div class="wrapper">
+    <div class="container-fluid">
       <% if current_user %>
-        <header class="header">
+        <header class="row">
           <%= erb :'layouts/header' %>
         </header>
       <% end %>
-      <section class="main">
-        <section class="content">
-          <div class="page-title">
-            <h2><%= @title_tag %></h2>
-          </div>
-          <%= erb :'layouts/flash' %>
-          <%= yield %>
-        </section>
-        <div class="footer">
+      <section class="content">
+        <div class="page-title">
+          <h2><%= @title_tag %></h2>
         </div>
+        <%= erb :'layouts/flash' %>
+        <%= yield %>
       </section>
-  </div>
+      <div class="footer">
+        <%= erb :'layouts/footer' %>
+      </div>
+
+    </div>
 </body>
 </html>

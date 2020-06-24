@@ -1,14 +1,14 @@
 source 'https://rubygems.org/'
-ruby '~> 2.6.3'
+ruby '~> 2.7.0'
 # App Stack
-gem 'sinatra', require: 'sinatra/base'
+gem 'sinatra', '~> 2.0.8', require: 'sinatra/base'
 gem 'sinatra-contrib'
 gem 'sinatra-initializers'
 gem 'sinatra-flash'
 gem 'sinatra-cross_origin'
 gem 'activesupport'
 gem 'json'
-gem 'oauth2'
+gem 'oauth2', '~> 1.4.4'
 # Database Stack
 gem 'httparty'
 gem 'puma'

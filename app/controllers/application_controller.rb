@@ -7,9 +7,13 @@ class ApplicationController < NightbotMover
   set :erb, escape_html: true
   
   before do
-    pass if %w[assets oauth .well-known].include? request.path.split('/')[1]
-    if (current_user.nil? || session_expired?)
-      debug_log "no current user or active session"
+    pass if ['assets', nil, 'welcome', 'oauth', '.well-known'].include? request.path.split('/')[1]
+    if session_expired?
+      debug_log('before pass session expired')
+      redirect '/oauth/authorize'
+    end
+    if current_user.nil?
+      debug_log "No current user or active session - " + current_user + "," + session[:access_token_expires_at]
       debug_log session.inspect
       session[:return_url] = request.fullpath
       redirect "/oauth/authorize"

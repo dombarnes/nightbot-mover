@@ -1,8 +1,9 @@
 class HomeController < ApplicationController  
 
-  get '/' do
-    redirect '/welcome' unless session[:current_user].nil?
-    erb :'home/index'
+  get '/welcome' do
+    debug_log('Hit /welcome')
+    redirect '/' if authenticated?
+    erb :'home/welcome'
   end
 
   get '/index.json' do
@@ -10,12 +11,14 @@ class HomeController < ApplicationController
     json 'OK'
   end
 
-  get '/welcome' do
+  get '/' do
+    debug_log('Hit /')
+    redirect '/welcome' unless authenticated?
     response = HTTParty.get(settings.nightbot_oauth_server + "/1/commands", headers: { "Authorization" => "Bearer #{session[:access_token]}", "Cache-Control" => "no-cache", "Content-Type" => "application/json" })
     json_body = JSON.parse(response.body)
     @commands = Command.collection(json_body["commands"])
     set_title("Welcome")
-    erb :'home/welcome'
+    erb :'home/index'
   end
 
   get '/export' do 
@@ -81,4 +84,5 @@ class HomeController < ApplicationController
     end
     erb :"home/results"
   end
+
 end

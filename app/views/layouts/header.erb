@@ -1,10 +1,10 @@
-<div class="sidebar">
+<div class="col-md-3">
   <%= link_to('<h1>Nightbot Mover</h1>', "/") %>
 </div>
-<div class="main">
+<div class="col-md-9">
   <form action="/oauth/logout" class="right" method="post">
       <img class="avatar" style="width:80px;height:80px;" src="<%= session[:current_user][:avatar] %>" />
-      <p>Logged in as: <%= current_user.displayName %>
-      <input type="submit" value="Logout" /></p>
+      <p>Logged in as: <%= current_user.displayName %> via <%= current_user.provider %></p>
+      <input class="btn btn-warning" type="submit" value="Logout" />
   </form>
 </div>

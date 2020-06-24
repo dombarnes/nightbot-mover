@@ -1,6 +1,6 @@
 development: &common_settings
   site_title: "Nightbot Mover"
-  application_host: http://localhost:3000
+  application_host: <%= ENV.fetch('APPLICATION_HOST') %>
   nightbot_oauth_server: https://api.nightbot.tv
   nightbot_oauth_scope: <%= ENV.fetch('NIGHTBOT_SCOPE') %>
   nightbot_client_id: <%= ENV.fetch('NIGHTBOT_CLIENT_ID') %>
