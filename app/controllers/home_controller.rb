@@ -36,11 +36,14 @@ class HomeController < ApplicationController
   end
 
   get '/export/download/:id' do
-    filename = "#{Time.now.strftime("%Y-%m-%d")} Export.json"
+    filename = "#{Time.now.strftime("%Y-%m-%d")} Nightbot Export for #{current_user.name}.json"
     local_file = "#{settings.root}/#{settings.tmp_folder}/#{params[:id]}"
-    if File.exists?(local_file)
-      send_file local_file, :filename => filename, :type => 'application/json'
-      FileUtils.rm local_file
+    if File.exists?(local_file)      
+      begin
+        send_file local_file, :filename => filename, :type => 'application/json'
+      ensure 
+        FileUtils.rm local_file
+      end
     else
       debug_log "File #{local_file} not found"
       return 404
