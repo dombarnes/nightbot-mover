@@ -13,6 +13,9 @@ gem 'oauth2', '~> 1.4.4'
 gem 'httparty'
 gem 'puma'
 
+# Performance Monitoring
+gem 'airbrake'
+
 gem 'rake'
 gem 'uglifier'
 gem 'dotenv'

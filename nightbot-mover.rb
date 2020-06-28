@@ -10,6 +10,7 @@ require 'date'
 require 'fileutils'
 require 'active_support/core_ext'
 
+
 puts '-- Loading app.rb --'
 
 class NightbotMover < Sinatra::Base
@@ -18,6 +19,10 @@ class NightbotMover < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::Namespace
   register Sinatra::CrossOrigin
+
+  use Airbrake::Rack::Middleware
+
+  get ('/errortest') { Airbrake.notify('App crashed!') }
   
   config_file 'config/settings.yml'
   # Dir.mkdir('logs') unless File.exist?('logs')
