@@ -28,9 +28,10 @@ class HomeController < ApplicationController
   post '/export' do
     response = HTTParty.get(settings.nightbot_oauth_server + "/1/commands", headers: { "Authorization" => "Bearer #{session[:access_token]}", "Cache-Control" => "no-cache", "Content-Type" => "application/json" })
     json_body = JSON.parse(response.body)
-    path = Dir.pwd
     filename = SecureRandom.uuid
-    full_path = "#{path}/#{settings.tmp_folder}/#{filename}"
+    debug_log filename
+    full_path = "#{settings.root}/#{settings.tmp_folder}/#{filename}"
+    debug_log full_path
     File.open(full_path, 'w') { |file| file.write(response.body)}
     return filename
   end
@@ -39,11 +40,7 @@ class HomeController < ApplicationController
     filename = "#{Time.now.strftime("%Y-%m-%d")} Nightbot Export for #{current_user.name}.json"
     local_file = "#{settings.root}/#{settings.tmp_folder}/#{params[:id]}"
     if File.exists?(local_file)      
-      begin
-        send_file local_file, :filename => filename, :type => 'application/json'
-      ensure 
-        FileUtils.rm local_file
-      end
+      send_file local_file, :filename => filename, :type => 'application/json'
     else
       debug_log "File #{local_file} not found"
       return 404

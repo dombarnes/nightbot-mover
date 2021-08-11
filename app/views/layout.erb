@@ -16,24 +16,22 @@
   <link rel="stylesheet" type="text/css"href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 </head>
 <body>
-  <body>
-    <div class="container-fluid">
-      <% if current_user %>
-        <header class="row">
-          <%= erb :'layouts/header' %>
-        </header>
-      <% end %>
-      <section class="content">
-        <div class="page-title">
-          <h2><%= @title_tag %></h2>
-        </div>
-        <%= erb :'layouts/flash' %>
-        <%= yield %>
-      </section>
-      <div class="footer">
-        <%= erb :'layouts/footer' %>
+  <div class="container-fluid">
+    <% if current_user %>
+      <header class="row">
+        <%= erb :'layouts/header' %>
+      </header>
+    <% end %>
+    <section class="content">
+      <div class="page-title">
+        <h2><%= @title_tag %></h2>
       </div>
-
+      <%= erb :'layouts/flash' %>
+      <%= yield %>
+    </section>
+    <div class="footer">
+      <%= erb :'layouts/footer' %>
     </div>
+  </div>
 </body>
 </html>
