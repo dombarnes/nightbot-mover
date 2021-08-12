@@ -22,7 +22,7 @@ class NightbotMover < Sinatra::Base
 
   use Airbrake::Rack::Middleware
 
-  get ('/errortest') { Airbrake.notify('App crashed!') }
+  # get ('/errortest') { Airbrake.notify('App crashed!') }
   
   config_file 'config/settings.yml'
   # Dir.mkdir('logs') unless File.exist?('logs')

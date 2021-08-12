@@ -7,7 +7,7 @@ class ApplicationController < NightbotMover
   set :erb, escape_html: true
   
   before do
-    pass if ['assets', nil, 'welcome', 'oauth', '.well-known'].include? request.path.split('/')[1]
+    pass if ['assets', nil, 'welcome', 'oauth', 'errortest', '.well-known'].include? request.path.split('/')[1]
     if session_expired?
       debug_log('before pass session expired')
       redirect '/oauth/authorize'

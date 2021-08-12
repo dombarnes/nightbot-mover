@@ -12,6 +12,6 @@ Airbrake.configure do |c|
 
   # Display debug output.
   c.logger.level = Logger::DEBUG
-  # c.performance_stats = true
+  c.performance_stats = true
 end
 require './nightbot-mover'
