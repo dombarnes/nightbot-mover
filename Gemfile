@@ -1,7 +1,7 @@
 source 'https://rubygems.org/'
 ruby '~> 2.7.0'
 # App Stack
-gem 'sinatra', '~> 2.0.8', require: 'sinatra/base'
+gem 'sinatra', '~> 2.2.0', require: 'sinatra/base'
 gem 'sinatra-contrib'
 gem 'sinatra-initializers'
 gem 'sinatra-flash'
